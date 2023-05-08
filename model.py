@@ -10,6 +10,9 @@ class User(db.Model):
   id = db.Column(db.Integer, primary_key = True, autoincrement = True)
   username = db.Column(db.String, nullable = False)
   password = db.Column(db.String, unique = True, nullable = False)
+  bio = db.Column(db.String, nullable = True)
+  email = db.Column(db.String, unique = True, nullable = False)
+  avatar_path = db.Column(db.String)
 
 class Post(db.Model):
 

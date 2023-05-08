@@ -1,35 +1,34 @@
-Specs Capstone: Car Culture
+Specs Capstone: DevSocial
 
-The car enthusiast app is a social networking platform designed for car enthusiasts to connect with each other, schedule meetups, and share their passion for cars. Users can create a profile, search for other users, and send messages to connect with other car enthusiasts in their area.
+DevSocial is a social network designed specifically for developers and other tech professionals to connect, collaborate, and share knowledge with one another. The platform allows users to create profiles highlighting their skills, experience, and areas of expertise, as well as to connect with other users and join communities based on shared interests or industries.
 
-The app allows users to create, view, and RSVP to meetups that have been scheduled, so that they can meet and connect with other like-minded car enthusiasts. Users can also create and view posts, including photos and videos of their cars, and engage with other users by commenting on their posts.
+The data model for DevSocial includes several key components, such as user profiles, communities, posts, comments, and likes. User profiles include information such as a user's name, location, job title, skills, and experience. Users can also create and join communities based on topics such as programming languages, development frameworks, or industry sectors.
 
-With the car enthusiast app, users can build a community around their shared interest in cars and connect with other car enthusiasts to discuss their favorite makes and models, share tips and advice, and participate in group activities such as car shows and cruises.
+Within communities, users can post updates, questions, or share resources, such as articles or tutorials. Other users can then comment on these posts and indicate their approval with a like. Users can also follow other users or communities to stay up to date on their activities.
 
-Overall, the car enthusiast app aims to provide a fun and engaging platform for car enthusiasts to connect, share their passion for cars, and build a community around their shared interest.
+The data model also includes features such as direct messaging, notifications, and search functionality, allowing users to easily communicate and discover new content on the platform. Overall, the DevSocial data model is designed to facilitate collaboration and knowledge sharing among tech professionals, fostering a vibrant and engaged community of users.
 
 
 Features:
 
-- User registration and login
-- Creating, viewing, and editing meetups
-- RSVPing to meetups
-- Creating and viewing posts
-- Commenting on posts
-- Sending and receiving messages to/from other users
 
+- User registration and authentication: Allow users to create an account and log in securely.
 
-User Interface:
+- User profiles: Users should be able to create a profile with information about themselves, such as their name, profile picture, bio, skills, education, and work    experience.
 
-- Home screen: The home screen displays a list of upcoming meetups and the latest posts made by users. Users can view more details about a meetup or a post by clicking on it.
+- News feed: A news feed can show users the latest posts from other users and groups they follow. Users can also post status updates, photos, and links to articles and other websites.
 
-- Meetups screen: This screen displays a list of all meetups that have been scheduled, with the option to create a new meetup. Users can view the details of a specific meetup, including the date, time, location, and RSVP status of other users who have indicated their attendance. Users can also RSVP to a meetup, edit the details of a meetup they created, or delete a meetup they created.
+- Groups: Users can join groups based on interests, industries, or geographic location. Groups can have their own news feeds, discussions, and events.
 
-- Posts screen: This screen displays a list of all posts made by users, with the option to create a new post. Users can view the details of a specific post, including the post content, media, and comments made by other users. Users can also add comments to a post they're interested in.
+- Messaging: Allow users to send private messages to each other.
 
-- Messages screen: This screen displays a list of all messages sent and received by the user, with the option to send a new message to another user.
+- Notifications: Notify users of new messages, friend requests, group updates, and other important events.
 
-- Profile screen: This screen displays the user's profile information, including their name, location, and a list of meetups they've RSVP'd to. Users can also edit their profile information or log out of the app.
+- Search: Allow users to search for other users, groups, and posts by keywords.
+
+- Privacy settings: Users should be able to control who can see their profile, posts, and other personal information.
+
+- Mobile optimization: The social network should be accessible and user-friendly on mobile devices.
 
 
 Tech Stack:
