@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container text-center">
+  <h1>Social Network</h1>
+  <h1>All Users</h1>
+
+  <ul>
+    {% for user in users %}
+      <li>
+        <p>Username: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Posts: {{ posts.post_content }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

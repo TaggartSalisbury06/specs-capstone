@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+  <h1>Create Message</h1>
+  <form action="/messages/create" method="post">
+    <div class="mb-3">
+      <label for="message_content" class="form-label">Message Content</label>
+      <textarea class="form-control" id="message_content" name="message_content" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="recipient_id" class="form-label">Recipient</label>
+      <select class="form-select" id="recipient_id" name="recipient_id">
+        {% for user in users %}
+          <option value="{{ user.id }}">{{ user.username }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+  </form>
+</div>
+{% endblock %}

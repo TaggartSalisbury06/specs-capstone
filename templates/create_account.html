@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Create New Account</h1>
+
+  <form action="/users/create" method="post">
+    <input type="text" name="username" placeholder="Username" class="form-control">
+    <input type="email" name="email" placeholder="Email" class="form-control">
+    <input type="password" name="password" placeholder="Password" class="form-control">
+    <input type="submit" value="Create Account" class="btn btn-primary">
+  </form>
+
+  {% if user %}
+    <p>Your account has been created! Your username is {{ user.username }} and your password is {{ user.password }}</p>
+  {% endif %}
+{% endblock %}

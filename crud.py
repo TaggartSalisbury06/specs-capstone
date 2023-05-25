@@ -1,6 +1,5 @@
 from model import db, User, Post, Message
 from server import app
-app = Flask(__name__)
 # User CRUD operations
 
 def create_user(username, password, email, bio=None, avatar_path=None):

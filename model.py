@@ -15,6 +15,35 @@ class User(db.Model):
   email = db.Column(db.String, unique = True, nullable = False)
   avatar_path = db.Column(db.String)
 
+  posts = db.relationship('Post', backref='user', lazy=True)
+
+  def check_password(self, password):
+    """
+    Checks if the given password matches the password for this user.
+
+    Args:
+      password: The password to check.
+
+    Returns:
+      True if the password matches, False otherwise.
+    """
+
+    # Get the hashed password from the database.
+    hashed_password = self.password
+
+    # Check if the given password matches the hashed password.
+    return check_password_hash(hashed_password, password)
+
+  def is_active(self):
+    # Customize the logic to determine whether the user is active or not
+    return True  # Replace with your logic
+
+  def get_id(self):
+    return str(self.id)
+  
+  def is_authenticated(self):
+    return True
+
   def __repr__(self):
     return f"<User id={self.id} username={self.username} email={self.email}>"
 
