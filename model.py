@@ -50,10 +50,12 @@ class User(db.Model):
 class Post(db.Model):
   __tablename__ = "posts"
 
-  id = db.Column(db.Integer, primary_key = True, autoincrement = True)
-  post_content = db.Column(db.String, nullable = False)
-  user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable = False)
+  id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+  post_content = db.Column(db.String, nullable=False)
+  user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
   post_date = db.Column(db.DateTime)
+  upvotes = db.Column(db.Integer, default=0)
+  downvotes = db.Column(db.Integer, default=0)
 
   def __repr__(self):
     return f"<Post id={self.id} post_content={self.post_content} post_date={self.post_date}>"

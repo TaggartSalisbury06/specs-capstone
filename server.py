@@ -103,14 +103,14 @@ def display_posts():
 
 @app.route("/users/create", methods=["GET", "POST"])
 def create_user():
-  if request.method == "GET":
-    return render_template("create_user.html")
 
   username = request.form["username"]
   email = request.form["email"]
   password = request.form["password"]
+  bio = request.form["bio"]
+  avatar_path = request.form["avatar_path"]
 
-  user = User(username=username, email=email, password=password)
+  user = User(username=username, email=email, password=password, bio=bio, avatar_path=avatar_path)
   db.session.add(user)
   db.session.commit()
 
@@ -120,6 +120,18 @@ def create_user():
 def logout():
   logout_user()
   return redirect("/")
+
+@app.route('/posts/<int:post_id>/upvote', methods=['POST'])
+@login_required  # Add the login_required decorator to protect this route
+def upvote_post(post_id):
+  post = get_post_by_id(post_id)
+  if post:
+    post.upvotes += 1
+    db.session.commit()
+    return redirect(url_for('home'))
+  else:
+    flash('Post not found')
+    return redirect(url_for('home'))
 
 if __name__ == "__main__":
   connect_to_db(app)

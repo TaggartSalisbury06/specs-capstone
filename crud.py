@@ -1,8 +1,8 @@
 from model import db, User, Post, Message
-from server import app
+# from server import app
 # User CRUD operations
 
-def create_user(username, password, email, bio=None, avatar_path=None):
+def create_user(username, password, email, bio, avatar_path):
   user = User(username=username, password=password, email=email, bio=bio, avatar_path=avatar_path)
   db.session.add(user)
   db.session.commit()
