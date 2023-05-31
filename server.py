@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, session, flash
+from flask import Flask, render_template, redirect, request, session, flash, url_for
 from model import connect_to_db, db, User, Post, Message
 from flask_login import current_user, login_user, logout_user, LoginManager, login_required
 from flask_bcrypt import check_password_hash
@@ -44,36 +44,7 @@ def create_post():
   db.session.add(new_post)
   db.session.commit()
 
-  return redirect("/posts")
-
-@app.route("/messages")
-@login_required
-def messages():
-  messages = Message.query.filter((Message.sender_id == current_user.id) | (Message.recipient_id == current_user.id)).all()
-  return render_template("messages.html", messages=messages)
-
-
-@app.route("/message/create", methods=["GET", "POST"])
-@login_required
-def create_message():
-  if request.method == "GET":
-    users = User.query.all()
-    return render_template("create_message.html", users=users)
-
-  recipient_id = request.form["recipient_id"]
-  message_content = request.form["message_content"]
-
-  recipient = User.query.get(recipient_id)
-  if recipient is None:
-    flash("Invalid recipient. Please select a valid user.")
-    return redirect("/create-message")
-
-  new_message = Message(message_content=message_content, sender=current_user, recipient=recipient)
-  db.session.add(new_message)
-  db.session.commit()
-
-  flash("Message sent successfully!")
-  return redirect("/messages")
+  return redirect("/")
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -122,16 +93,25 @@ def logout():
   return redirect("/")
 
 @app.route('/posts/<int:post_id>/upvote', methods=['POST'])
-@login_required  # Add the login_required decorator to protect this route
+@login_required
 def upvote_post(post_id):
-  post = get_post_by_id(post_id)
+  post = Post.query.get(post_id)
   if post:
     post.upvotes += 1
     db.session.commit()
-    return redirect(url_for('home'))
+    return redirect('/')
   else:
     flash('Post not found')
-    return redirect(url_for('home'))
+    return redirect('/')
+
+@app.route('/posts/<int:post_id>/delete', methods=['POST'])
+def delete_post(post_id):
+    if current_user.is_authenticated:
+      post = Post.query.get(post_id)
+      if post and post.user_id == current_user.id:
+        db.session.delete(post)
+        db.session.commit()
+    return redirect('/')
 
 if __name__ == "__main__":
   connect_to_db(app)

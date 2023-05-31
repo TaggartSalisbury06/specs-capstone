@@ -1,33 +1,17 @@
 {% extends "base.html" %}
 
 {% block body %}
-  <div class="container mx-auto py-4">
-    <div class="bg-white rounded-lg shadow-lg p-6">
-      <h1 class="text-2xl font-bold mb-4">Profile</h1>
-
-      <div class="flex items-center mb-4">
-        <div class="w-16 h-16 rounded-full overflow-hidden">
-          {% if current_user.avatar_path %}
-            <img src="{{ current_user.avatar_path }}" alt="Avatar" class="w-full h-full object-cover">
-          {% else %}
-            <svg class="w-full h-full text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 14C15.3137 14 18 11.3137 18 8C18 4.68629 15.3137 2 12 2C8.68629 2 6 4.68629 6 8C6 11.3137 8.68629 14 12 14ZM12 16C9.79086 16 7.84344 15.1571 6.58579 13.8284C5.32814 12.4997 4.82814 10.8536 5.17157 9.24264C5.51499 7.63171 6.68235 6.34315 8.17157 5.82843C9.66079 5.31371 11.2892 5.65686 12 7.24264C12.7108 5.65686 14.3392 5.31371 15.8284 5.82843C17.3176 6.34315 18.485 7.63171 18.8284 9.24264C19.1719 10.8536 18.6719 12.4997 17.4142 13.8284C16.1566 15.1571 14.2091 16 12 16Z"></path>
-              <path d="M19.002 21H4.99805C3.89464 21 2.99805 20.1034 2.99805 19V18.5C2.99805 17.6716 3.30301 16.882 3.85748 16.3275C4.41195 15.773 5.20153 15.468 6.02987 15.468H17.9711C18.7995 15.468 19.5891 15.773 20.1436 16.3275C20.698 16.882 21.0029 17.6716 21.0029 18.5V19C21.0029 20.1034 20.1063 21 19.002 21Z"></path>
-            </svg>
-          {% endif %}
-        </div>
-
-        <div class="ml-4">
-          <h2 class="text-xl font-bold">{{ current_user.username }}</h2>
-        </div>
-      </div>
-
-      <h3 class="text-lg font-bold mb-2">Posts:</h3>
-      <ul class="list-disc pl-6">
-        {% for post in current_user.posts %}
-          <li>{{ post.post_content }}</li>
-        {% endfor %}
-      </ul>
+<div class="profile-box">
+  <div class="profile-header">
+    <div class="title">
+      <h3 class="name">{{ current_user.username }}</h3>
+      <p class="light-font">@{{ current_user.username }}</p>
+    </div>
+    </div>
+    <div class="profile-bio">
+      <p>{{ current_user.bio }}</p>
     </div>
   </div>
+</div>
 {% endblock %}
+

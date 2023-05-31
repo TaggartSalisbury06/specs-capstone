@@ -6,15 +6,28 @@
       {% if current_user.is_authenticated %}
       <div class="card mb-4">
         <div class="card-body">
-          <h2 class="card-title">Posts</h2>
+          <h2 class="card-title">Feed</h2>
           <ul class="list-group">
-            {% for post in posts %}
+            {% for post in posts|sort(reverse=True, attribute='upvotes') %}
             <li class="list-group-item">
               <h5 class="card-title">{{ post.user.username }}</h5>
               <p class="card-text">{{ post.post_content }}</p>
-              <p class="card-text">Upvotes: {{ post.upvotes }}</p>
-              <p class="card-text">Downvotes: {{ post.downvotes }}</p>
-              <!-- <button class="btn btn-primary" onclick="upvotePost({{ post.id }})">Upvote</button> -->
+                <div>
+                  <form action="/posts/{{ post.id }}/upvote" method="post" style="display: flex; align-items: center;">
+                    <button type="submit" class="btn btn-link" style="margin-right: 5px;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                        <path d="M8 1 2 7h12z" />
+                      </svg>
+                    </button>
+                    <p style="margin: 0;">{{ post.upvotes }}</p>
+                  </form>
+                </div>
+              
+              {% if current_user.is_authenticated and current_user.id == post.user.id %}
+                <form action="/posts/{{ post.id }}/delete" method="post" style="display: inline;">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              {% endif %}
             </li>
             {% endfor %}
           </ul>

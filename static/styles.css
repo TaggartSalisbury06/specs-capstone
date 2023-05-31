@@ -1,0 +1,74 @@
+.vote {
+  padding: 0; 
+  border: none; 
+  background: none;
+}
+
+.profile-box {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", sans-serif;
+  font-size: 19px;
+  margin: 2rem;
+}
+
+.btn-custom:hover svg {
+  fill: rgb(29, 161, 242);
+}
+
+.btn-custom {
+  background: #fff;
+  border: none;
+  border-radius: 1.75rem;
+  color: rgb(20, 23, 26);
+  display: inline-table;
+  margin-bottom: 4px;
+  padding: 0.8rem;
+  text-align: left;
+  width: auto;
+  transform: all 1s ease;
+}
+
+.btn-custom span {
+  font-weight: 700;
+  margin: 0 0 0 1rem;
+}
+
+.btn-custom:hover {
+  background: rgba(29, 161, 242, 0.1);
+  border: none;
+  color: rgba(29, 161, 242);
+}
+
+.content {
+  display: flex;
+  background: linear-gradient(120deg, #ccc, #777);
+  min-height: 100%;
+  text-align: center;
+}
+
+.content h2 {
+  margin: auto auto;
+}
+
+.profile-box{
+  padding: 20px;
+  width: 560px;
+  background-color: white;
+  box-shadow: 1px 2px 10px -3px rgba(0,0,0,0.5);
+  border-radius: 10px;
+}
+
+.title .name{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.light-font{
+  font-size: 14px;
+  color: hsl(214, 7%, 47%);
+}
+
+.profile-bio{
+  margin-bottom: 15px;
+}

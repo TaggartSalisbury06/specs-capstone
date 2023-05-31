@@ -3,15 +3,21 @@
 {% block body %}
 <div class="container">
   <div class="row justify-content-center">
-    {% for post in posts %}
-      <div class="col-md-4 mt-3">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">User: {{ post.user.username }}</h5>
-            <p class="card-text">{{ post.post_content }}</p>
-          </div>
-        </div>
+    {% for post in posts|sort(reverse=True, attribute='upvotes') %}
+    <li class="list-group-item">
+      <h5 class="card-title">{{ post.user.username }}</h5>
+      <p class="card-text">{{ post.post_content }}</p>
+      <div>
+        <form action="/posts/{{ post.id }}/upvote" method="post" style="display: flex; align-items: center;">
+          <button type="submit" class="btn btn-link" style="margin-right: 5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+              <path d="M8 1 2 7h12z" />
+            </svg>
+          </button>
+          <p style="margin: 0;">{{ post.upvotes }}</p>
+        </form>
       </div>
+    </li>
     {% endfor %}
   </div>
 </div>
