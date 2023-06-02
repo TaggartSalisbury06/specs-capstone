@@ -4,16 +4,16 @@
 <div class="container homepage">
     <div class="col-md-4">
       {% if current_user.is_authenticated %}
-      <div class="card mb-4">
-        <div class="card-body">
+      <div class="mb-4">
+        <div class="card-body login-container">
           <h2 class="card-title">Feed</h2>
           <ul class="list-group">
             {% for post in posts|sort(reverse=True, attribute='upvotes') %}
-            <li class="list-group-item">
+            <li class="posts">
               <h5 class="card-title">{{ post.user.username }}</h5>
               <p class="card-text">{{ post.post_content }}</p>
                 <div>
-                  <form action="/posts/{{ post.id }}/upvote" method="post" style="display: flex; align-items: center;">
+                  <form action="/posts/{{ post.id }}/upvote" method="post" style="display: flex; justify-content: center; align-items: center;">
                     <button type="submit" class="btn btn-link" style="margin-right: 5px;">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
                         <path d="M8 1 2 7h12z" />
@@ -25,7 +25,13 @@
               
               {% if current_user.is_authenticated and current_user.id == post.user.id %}
                 <form action="/posts/{{ post.id }}/delete" method="post" style="display: inline;">
-                  <button type="submit" class="btn btn-danger">Delete</button>
+                  <button type="submit" class="btn btn-delete">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Delete
+                  </button>
                 </form>
               {% endif %}
             </li>
@@ -38,17 +44,25 @@
     {% if not current_user.is_authenticated %}
   <div class="row justify-content-center mt-5">
     <div class="col-md-6">
-      <div class="card mb-4">
-        <div class="card-body">
+      <div class="mb-4">
+        <div class="card-body login-container">
           <h2 class="card-title">Login</h2>
           <form action="/login" method="post">
-            <div class="form-group">
-              <input type="text" class="form-control mb-3" name="username" placeholder="Username">
+            <div class="form-group user-box">
+              <input type="text" class="form-control mb-3" name="username">
+              <label>Username</label>
             </div>
-            <div class="form-group">
-              <input type="password" class="form-control mb-3" name="password" placeholder="Password">
+            <div class="form-group user-box">
+              <input type="password" class="form-control mb-3" name="password">
+              <label>Password</label>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-custom">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Login
+            </button>
           </form>
         </div>
       </div>
@@ -58,26 +72,33 @@
   {% if not current_user.is_authenticated %}
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <div class="card mb-4">
-        <div class="card-body">
+      <div class=" mb-4">
+        <div class="card-body login-container">
           <h2 class="card-title">Create User</h2>
           <form action="/users/create" method="post">
-            <div class="form-group">
-              <input type="text" class="form-control mb-3" name="username" placeholder="Username">
+            <div class="form-group user-box">
+              <input type="text" class="form-control mb-3" name="username">
+              <label>Username</label>
             </div>
-            <div class="form-group">
-              <input type="email" class="form-control mb-3" name="email" placeholder="Email">
+            <div class="form-group user-box">
+              <input type="email" class="form-control mb-3" name="email">
+              <label>Email</label>
             </div>
-            <div class="form-group">
-              <input type="password" class="form-control mb-3" name="password" placeholder="Password">
+            <div class="form-group user-box">
+              <input type="password" class="form-control mb-3" name="password">
+              <label>Password</label>
             </div>
-            <div class="form-group">
-              <input type="text" class="form-control mb-3" name="bio" placeholder="Bio">
+            <div class="form-group user-box">
+              <input type="text" class="form-control mb-3" name="bio">
+              <label>Bio</label>
             </div>
-            <div class="form-group">
-              <input type="url" class="form-control mb-3" name="avatar_path" placeholder="Avatar URL">
-            </div>
-            <button type="submit" class="btn btn-primary">Create User</button>
+            <button type="submit" class="btn btn-custom">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Create User
+            </button>
           </form>
         </div>
       </div>
@@ -87,14 +108,20 @@
   {% if current_user.is_authenticated %}
   <div class="row">
     <div class="col-md-6">
-      <div class="card mb-4">
-        <div class="card-body">
+      <div class="mb-4">
+        <div class="card-body login-container">
           <h2 class="card-title">Create Post</h2>
           <form action="/posts/create" method="post">
-            <div class="form-group">
+            <div class="form-group user-box">
               <textarea class="form-control mb-3" name="post_content" rows="3" placeholder="Post Content"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Create Post</button>
+            <button type="submit" class="btn btn-custom">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Create Post
+            </button>
           </form>
         </div>
       </div>

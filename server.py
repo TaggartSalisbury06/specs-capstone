@@ -79,9 +79,8 @@ def create_user():
   email = request.form["email"]
   password = request.form["password"]
   bio = request.form["bio"]
-  avatar_path = request.form["avatar_path"]
 
-  user = User(username=username, email=email, password=password, bio=bio, avatar_path=avatar_path)
+  user = User(username=username, email=email, password=password, bio=bio)
   db.session.add(user)
   db.session.commit()
 
